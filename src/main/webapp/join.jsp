@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
 
     <link rel="stylesheet" href="./utils/bootstrap/css/bootstrap.min.css">
     <script src="./utils/jquery.min.js"></script>
