@@ -3,7 +3,7 @@
 	<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
     <title>RMS</title>
     <style>
-  
+  	* {
         margin: 0;
         padding: 0;
     }   
@@ -27,7 +27,7 @@
         <div class="nav-container" style="height: 64px;">
             <div style="height: 64px; float: left;">
                 <img src="./img/icon.png" alt="404" style="width: 64px; height: 64px; float: left;">
-                <p style="line-height: 64px; font-weight: bold; font-family: Microsoft Yahei; font-size: 24px; margin-left: 80px;">风险管理系统</p>
+                <span style="line-height: 64px; font-weight: bold; font-family: Microsoft Yahei; font-size: 24px; margin-left: 20px;">风险管理系统</span>
             </div>
 
             <div style="float: right; height: 64px;">
