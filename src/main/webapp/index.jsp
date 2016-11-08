@@ -20,7 +20,7 @@
         <div style="margin: 20px 25px 20px 25px;">
             <button type="button" id="sign-in" class="btn btn-primary" style="width: 250px; height: 40px">Sign In</button>
         </div>
-        <p style="color: white; float: right; margin-right: 25px;">No Account? <a href="./join.jsp" style="font-weight: bold;">Sign Up</a> instead!</p>
+        <p style="color: white; float: right; margin-right: 25px;">No Account? <a href="./jsp/join.jsp" style="font-weight: bold;">Sign Up</a> instead!</p>
     </div>
 </body>
 </html>
