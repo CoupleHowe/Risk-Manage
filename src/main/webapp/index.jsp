@@ -1,6 +1,6 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html charset=gb2312">
+	<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
     <title>RMS</title>
     <style>
   
