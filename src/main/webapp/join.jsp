@@ -17,10 +17,50 @@
         <div style="margin: 20px 25px 20px 25px;">
             <input type="password" class="form-control" id="password" placeholder="Password" style="width: 250px; height: 40px">
         </div>
-        <div style="margin: 20px 25px 20px 25px;">
-            <button type="button" id="sign-in" class="btn btn-success" style="width: 250px; height: 40px">Sign Up</button>
+        <p id="hint" style="margin-left: 25px; margin-bottom: 0px; margin-top: 15px; height: 20px; color: red; font-family: Microsoft Yahei;"></p>
+        <div style="margin: 0px 25px 10px 25px; line-height">
+            <button type="button" id="sign-up" class="btn btn-success" style="width: 250px; height: 40px">Sign Up</button>
         </div>
         <p style="color: white; float: right; margin-right: 25px;">Have an account? <a href="./index.jsp" style="font-weight: bold;">Sign In</a> instead!</p>
     </div>
 </body>
 </html>
+
+<script>
+    var req;
+    $("#sign-up").click(function() {
+        var user_name = document.getElementById("user_name").value.trim();
+        var password = document.getElementById("password").value.trim();
+       	var url = "addUser?user_name=" + user_name + "&password=" + password;
+
+        if(user_name === "")
+            $("#hint").text("用户名不能为空");
+        else if(password === "")
+            $("#hint").text("密码不能为空");
+        else {
+            // 创建XMLHttoRequest对象
+            if(window.XMLHttpRequest) {  
+                req = new XMLHttpRequest();  
+            }else if(window.ActiveXObject) {  
+                req = new ActiveXObject("Microsoft.XMLHTTP");  
+            }
+
+            req.open("GET", url, true);
+            req.onreadystatechange = register;  
+            req.send(null);       
+        }
+    })
+
+    function register() {
+        if(req.readyState == 4 && req.status == 200) {  
+            var check = req.responseText;  
+            
+            if(check === "YES") {
+                window.location.href="./index.jsp"; 
+            }
+            else if(check === "NO") {
+                $("#hint").text("用户名已存在");
+            }
+        }  
+    }
+</script>

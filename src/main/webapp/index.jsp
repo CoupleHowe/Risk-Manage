@@ -17,7 +17,8 @@
         <div style="margin: 20px 25px 20px 25px;">
             <input type="password" class="form-control" id="password" placeholder="Password" style="width: 250px; height: 40px">
         </div>
-        <div style="margin: 20px 25px 20px 25px;">
+        <p id="hint" style="margin-left: 25px; margin-bottom: 0px; margin-top: 15px; height: 20px; color: red; font-family: Microsoft Yahei;"></p>
+        <div style="margin: 0px 25px 10px 25px; line-height">
             <button type="button" id="sign-in" class="btn btn-primary" style="width: 250px; height: 40px">Sign In</button>
         </div>
         <p style="color: white; float: right; margin-right: 25px;">No Account? <a href="./join.jsp" style="font-weight: bold;">Sign Up</a> instead!</p>
@@ -28,20 +29,26 @@
 <script>
     var req;
     $("#sign-in").click(function() {
-        var user_name = document.getElementById("user_name").value;
-        var password = document.getElementById("password").value;
-        var url = "addRisk?user_name=" + user_name + "&password=" + password;
+        var user_name = document.getElementById("user_name").value.trim();
+        var password = document.getElementById("password").value.trim();
+        var url = "findUser?user_name=" + user_name + "&password=" + password;
 
-        // 创建XMLHttoRequest对象
-        if(window.XMLHttpRequest) {  
-            req = new XMLHttpRequest();  
-        }else if(window.ActiveXObject) {  
-            req = new ActiveXObject("Microsoft.XMLHTTP");  
+        if(user_name === "")
+            $("#hint").text("用户名不能为空");
+        else if(password === "")
+            $("#hint").text("密码不能为空");
+        else {
+            // 创建XMLHttoRequest对象
+            if(window.XMLHttpRequest) {  
+                req = new XMLHttpRequest();  
+            }else if(window.ActiveXObject) {  
+                req = new ActiveXObject("Microsoft.XMLHTTP");  
+            }
+
+            req.open("GET", url, true);
+            req.onreadystatechange = login;  
+            req.send(null);       
         }
-
-        req.open("GET", url, true);
-        req.onreadystatechange = login;  
-        req.send(null);       
     })
 
     function login() {
@@ -49,10 +56,10 @@
             var check = req.responseText;  
             
             if(check === "YES") {
-            	window.location.href="./jsp/risk-manage.jsp"; 
+                window.location.href="./jsp/risk-manage.jsp"; 
             }
             else if(check === "NO") {
-                
+                $("#hint").text("用户不存在或密码错误");
             }
         }  
     }
