@@ -51,8 +51,8 @@ public class FindUser extends HttpServlet {
             out.close();  
         }  
         
-		//	    request.setAttribute("info", info);//保存错误信息  
-		//	    request.getRequestDispatcher("Login.jsp").forward(request,response);//跳转  
+		//	    request.setAttribute("info", info); 
+		//	    request.getRequestDispatcher("Login.jsp").forward(request,response); 
       
     }  
   

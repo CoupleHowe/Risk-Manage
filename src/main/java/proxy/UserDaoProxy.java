@@ -5,12 +5,12 @@ import dbc.DatabaseConnection;
 import vo.UserVo;
 
 public class UserDaoProxy {
-	private DatabaseConnection dbc = null;//定义数据库连接  
+	private DatabaseConnection dbc = null; 
 	private UserDao dao = null;
 	
 	public UserDaoProxy(){  
         try {  
-            dbc = new DatabaseConnection();//实例化数据库连接  
+            dbc = new DatabaseConnection(); 
             dao = new UserDao(dbc.getConnection());   
         } catch (Exception e) {  
             e.printStackTrace();  
