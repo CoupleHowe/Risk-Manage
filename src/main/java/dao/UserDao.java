@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import vo.UserVo;  
 
 public class UserDao {
-	private Connection conn = null;//定义数据库连接对象   
-    private PreparedStatement pstmt = null;//定义数据库操作对象
+	private Connection conn = null;  
+    private PreparedStatement pstmt = null;
     
     public UserDao(Connection conn){ 
         this.conn = conn;  
@@ -18,13 +18,13 @@ public class UserDao {
         boolean flag = false;  
         try {  
             String sql = "select user_name from users where user_name=? and password=?";  
-            pstmt = conn.prepareStatement(sql);//实例化操作  
+            pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, user.getUser_name());  
             pstmt.setString(2, user.getPassword());  
-            ResultSet rSet = pstmt.executeQuery();//取得结果   
+            ResultSet rSet = pstmt.executeQuery();   
             
             if(rSet.next()){  
-                user.setUser_name(rSet.getString(1));//取得用户名  
+                user.setUser_name(rSet.getString(1));  
                 flag = true;        
             }  
   
@@ -75,12 +75,12 @@ public class UserDao {
         boolean flag = false;  
         try {  
 		    	String sql = "select user_name from users where user_name=?";  
-		        pstmt = conn.prepareStatement(sql);//实例化操作  
+		        pstmt = conn.prepareStatement(sql); 
 		        pstmt.setString(1, user.getUser_name());  
-		        ResultSet rSet = pstmt.executeQuery();//取得结果   
+		        ResultSet rSet = pstmt.executeQuery();   
 		        
 		        if(rSet.next()){  
-		            user.setUser_name(rSet.getString(1));//取得用户名  
+		            user.setUser_name(rSet.getString(1));  
 		            flag = true;        
 		        }
         } catch (Exception e) {  
