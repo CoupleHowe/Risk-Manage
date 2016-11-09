@@ -20,7 +20,40 @@
         <div style="margin: 20px 25px 20px 25px;">
             <button type="button" id="sign-in" class="btn btn-primary" style="width: 250px; height: 40px">Sign In</button>
         </div>
-        <p style="color: white; float: right; margin-right: 25px;">No Account? <a href="./jsp/join.jsp" style="font-weight: bold;">Sign Up</a> instead!</p>
+        <p style="color: white; float: right; margin-right: 25px;">No Account? <a href="./join.jsp" style="font-weight: bold;">Sign Up</a> instead!</p>
     </div>
 </body>
 </html>
+
+<script>
+    var req;
+    $("#sign-in").click(function() {
+        var user_name = document.getElementById("user_name").value;
+        var password = document.getElementById("password").value;
+        var url = "addRisk?user_name=" + user_name + "&password=" + password;
+
+        // 创建XMLHttoRequest对象
+        if(window.XMLHttpRequest) {  
+            req = new XMLHttpRequest();  
+        }else if(window.ActiveXObject) {  
+            req = new ActiveXObject("Microsoft.XMLHTTP");  
+        }
+
+        req.open("GET", url, true);
+        req.onreadystatechange = login;  
+        req.send(null);       
+    })
+
+    function login() {
+        if(req.readyState == 4 && req.status == 200) {  
+            var check = req.responseText;  
+            
+            if(check === "YES") {
+            	window.location.href="./jsp/risk-manage.jsp"; 
+            }
+            else if(check === "NO") {
+                
+            }
+        }  
+    }
+</script>

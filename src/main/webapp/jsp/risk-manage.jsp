@@ -28,7 +28,7 @@
     <div class="container" style="width: 900px; height: 100%; min-width: 900px; margin: 10px auto;">
         <div class="nav-container" style="height: 64px;">
             <div style="height: 64px; float: left;">
-                <img src="./img/icon.png" alt="404" style="width: 64px; height: 64px; float: left;">
+                <img src="../img/icon.png" alt="404" style="width: 64px; height: 64px; float: left;">
                 <span style="line-height: 64px; font-weight: bold; font-family: Microsoft Yahei; font-size: 24px; margin-left: 20px;">风险管理系统</span>
             </div>
 
