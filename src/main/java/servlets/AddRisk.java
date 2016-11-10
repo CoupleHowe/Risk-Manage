@@ -49,7 +49,7 @@ public class AddRisk extends HttpServlet {
 			String description = new String("无");
 
 			if(possibility.equals("high"))
-				possibility = "高";
+				possibility = new String("高".getBytes(), "UTF-8");
 			else if(possibility.equals("middle"))
 				possibility = "中";
 			else
@@ -61,6 +61,8 @@ public class AddRisk extends HttpServlet {
 				effectLevel = "中";
 			else
 				effectLevel = "低";
+			
+			System.out.println(possibility);
 			
 			RiskVo risk = new RiskVo(riskContent, possibility, effectLevel, thresholdValue, submitter, tracker, state, description); 
 			RiskDaoProxy riskDaoProxy = new RiskDaoProxy();
