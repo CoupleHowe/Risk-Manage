@@ -36,9 +36,7 @@ public class UserDaoProxy {
         
         try {  
             flag = dao.register(user); 
-        } catch (Exception e) {  
-            throw e;  
-        }finally{  
+        } finally{  
             dbc.close();  
         }  
         

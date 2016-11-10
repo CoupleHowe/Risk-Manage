@@ -59,7 +59,7 @@ public class AddRisk extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {}
+		}
 	}
 
 	/**

@@ -53,11 +53,9 @@ public class FindUser extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {}
-
+		}
 		// request.setAttribute("info", info);
 		// request.getRequestDispatcher("Login.jsp").forward(request,response);
-
 	}
 
 	/**

@@ -58,7 +58,7 @@ public class ShowRisk extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {}
+		}
 	}
 
 	/**
