@@ -22,10 +22,10 @@
             </li>
 
             <li role="presentation" class="dropdown" style="float: right; margin-right: 100px;">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: underline; font-family: Microsoft Yahei; line-height: 30px;  color: #463265">Root</a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: underline; font-family: Microsoft Yahei; line-height: 30px;  color: #463265" id="userInfo"></a>
                 
                 <ul class="dropdown-menu" role="menu">
-                    <li role="presentation"><a role="menuitem" href="#" style="font-family: Microsoft Yahei; line-height: 30px;  color: #463265">退出</a></li>
+                    <li role="presentation"><a role="menuitem" href="#" style="font-family: Microsoft Yahei; line-height: 30px;  color: #463265" id="logout-btn">退出</a></li>
                 </ul>
             </li>
 
@@ -130,6 +130,22 @@
 </html>
 
 <script>
+	window.onload = function() {
+        var user_name = localStorage.getItem("user_name");
+		if(user_name === null) {
+			$("#userInfo").html("登录");
+			$("#userInfo").click(function() { window.location.href="../index.jsp"; });
+		}
+		else {
+			$("#userInfo").html(user_name);
+		}
+	}
+
+	$("#logout-btn").click(function() {
+		localStorage.removeItem("user_name");
+    	window.location.href="../index.jsp"; 
+	})
+	
     $("#submit-btn").click(function() {
         var riskContent = encodeURI(document.getElementById("risk-content").value.trim());
         var possibility = encodeURI($('input:radio[name="possibility"]:checked').val());        

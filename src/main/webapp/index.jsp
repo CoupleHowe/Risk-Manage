@@ -56,6 +56,7 @@
             var check = req.responseText;  
             
             if(check === "YES") {
+            	localStorage.setItem("user_name", document.getElementById("user_name").value.trim())
                 window.location.href="./jsp/rms-add-risk.jsp"; 
             }
             else if(check === "NO") {
