@@ -22,10 +22,10 @@
             </li>
 
             <li role="presentation" class="dropdown" style="float: right; margin-right: 100px;">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: underline; font-family: Microsoft Yahei; line-height: 30px;  color: #463265">Root</a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-decoration: underline; font-family: Microsoft Yahei; line-height: 30px;  color: #463265" id="userInfo"></a>
                 
                 <ul class="dropdown-menu" role="menu">
-                    <li role="presentation"><a role="menuitem" href="#" style="font-family: Microsoft Yahei; line-height: 30px;  color: #463265">退出</a></li>
+                    <li role="presentation"><a role="menuitem" href="#" style="font-family: Microsoft Yahei; line-height: 30px;  color: #463265" id="logout-btn">退出</a></li>
                 </ul>
             </li>
 
@@ -82,19 +82,31 @@
 </html>
 
 <script>
-    window.onload = function() {
-        var url = "../showRisk";
+	window.onload = function() {
+	    var user_name = localStorage.getItem("user_name");
+			if(user_name === null) {
+				$("#userInfo").html("登录");
+				$("#userInfo").click(function() { window.location.href="../index.jsp"; });
+			}
+			else {
+				$("#userInfo").html(user_name);
+			}
+		
+	    var url = "../showRisk";
+	    if(window.XMLHttpRequest) {  
+	        req = new XMLHttpRequest();  
+	    }else if(window.ActiveXObject) {  
+	        req = new ActiveXObject("Microsoft.XMLHTTP");  
+	    }
+	    req.open("GET", url, true);
+	    req.onreadystatechange = callback;  
+	    req.send(null);   
+	}
 
-        if(window.XMLHttpRequest) {  
-            req = new XMLHttpRequest();  
-        }else if(window.ActiveXObject) {  
-            req = new ActiveXObject("Microsoft.XMLHTTP");  
-        }
-
-        req.open("GET", url, true);
-        req.onreadystatechange = callback;  
-        req.send(null);   
-    }
+	$("#logout-btn").click(function() {
+		localStorage.removeItem("user_name");
+   	window.location.href="../index.jsp"; 
+	})
 
     function callback() {
     	if(req.readyState == 4 && req.status == 200) {  
