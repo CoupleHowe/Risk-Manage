@@ -50,14 +50,14 @@ public class ShowRisk extends HttpServlet {
 				System.out.println("b");
 			}
 			else {
-//				ArrayList<RiskVo> risks = riskDaoProxy.getRisks();
-//				
-//				String res = new String();
-//				for(int i = 0; i < risks.size(); i++) {
-//					res += "<tr>" + risks.get(i).toTable() + "</tr>";
-//				}
+				ArrayList<RiskVo> risks = riskDaoProxy.getRisks();
 				
-				out.write("YEs");
+				String res = new String();
+				for(int i = 0; i < risks.size(); i++) {
+					res += risks.get(i).toTable();
+				}
+				
+				out.write(res);
 			}
 
 			out.flush();
