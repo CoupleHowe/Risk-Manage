@@ -45,25 +45,9 @@ public class AddRisk extends HttpServlet {
 			String thresholdValue = URLDecoder.decode(request.getParameter("thresholdValue"), "UTF-8");
 			String submitter = URLDecoder.decode(request.getParameter("submitter"), "UTF-8");
 			String tracker = URLDecoder.decode(request.getParameter("tracker"), "UTF-8");
-			String state = new String("未发现");
-			String description = new String("无");
-
-			if(possibility.equals("high"))
-				possibility = new String("高".getBytes(), "UTF-8");
-			else if(possibility.equals("middle"))
-				possibility = "中";
-			else
-				possibility = "低";
-			
-			if(effectLevel.equals("high"))
-				effectLevel = "高";
-			else if(effectLevel.equals("middle"))
-				effectLevel = "中";
-			else
-				effectLevel = "低";
-			
-			System.out.println(possibility);
-			
+			String state = "not found";
+			String description = "null";
+						
 			RiskVo risk = new RiskVo(riskContent, possibility, effectLevel, thresholdValue, submitter, tracker, state, description); 
 			RiskDaoProxy riskDaoProxy = new RiskDaoProxy();
 			if (riskDaoProxy.add(risk))
