@@ -128,8 +128,16 @@
 
     function callback() {
     	if(req.readyState == 4 && req.status == 200) {  
-            var res = req.responseText;  
+            var res = req.responseText; 
+            res = res.replace(new RegExp(/high/g),'高');
+            res = res.replace(new RegExp(/middle/g),'中');
+            res = res.replace(new RegExp(/low/g),'低');
+            res = res.replace(new RegExp(/(not found)/g),'未发现');
+            res = res.replace(new RegExp(/(null)/g),'无');
             $("#table-body").html(res);
         }
+    	
+    	$("th").css("font-family", "Microsoft Yahei");
+        $("td").css("font-family", "Microsoft Yahei");
     }
 </script>

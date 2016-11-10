@@ -87,38 +87,8 @@ public class RiskVo {
 		this.description = description;
 	}
 	
-	public String toTable() {
-		
-		String _possibility = null;
-		String _effectLevel = null;
-		String _state = null;
-		String _description = null;
-		
-		if(this.possibility.equals("high"))
-			_possibility = "高";
-		else if(this.possibility.equals("middle"))
-			_possibility = "中";
-		else if(this.possibility.equals("low"))
-			_possibility = "低";
-		
-		if(this.effectLevel.equals("high"))
-			_effectLevel = "高";
-		else if(this.effectLevel.equals("middle"))
-			_effectLevel = "中";
-		else if(this.effectLevel.equals("low"))
-			_effectLevel = "低";
-		
-		if(this.state.equals("not found"))
-			_state = "未发现";
-		else
-			_state = this.state;
-		
-		if(this.description.equals("null"))
-			_description = "无";
-		else
-			_description = this.description;
-			
-		return "<tr><td>" + this.riskContent + "</td><td>" + _possibility + "</td><td>" + _effectLevel + "</td><td>"
-					+ this.thresholdValue + "</td><td>" + this.submitter + "</td><td>" + this.tracker + "</td><td>" + _state + "</td><td>" + _description + "</td></tr>"; 
+	public String toTable() {			
+		return "<tr><td>" + this.riskContent + "</td><td>" + this.possibility + "</td><td>" + this.effectLevel + "</td><td>"
+					+ this.thresholdValue + "</td><td>" + this.submitter + "</td><td>" + this.tracker + "</td><td>" + this.state + "</td><td>" + this.description + "</td></tr>"; 
 	}
 }
