@@ -52,8 +52,7 @@ public class AddUser extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-		}
+		} finally {}
 	}
 
 	/**

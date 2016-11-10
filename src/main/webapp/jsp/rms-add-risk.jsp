@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Track | Risk Management System</title>
+    <title>Add | Risk Management System</title>
     <style>
         * {
             margin: 0;
@@ -33,8 +33,8 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-family: Microsoft Yahei; line-height: 30px; color: #463265">风险管理</a>
                 
                 <ul class="dropdown-menu" role="menu">
-                    <li role="presentation"><a role="menuitem" href="#" style="font-family: Microsoft Yahei; line-height: 30px;  color: #463265">添加条目</a></li>
-                    <li role="presentation"><a role="menuitem" href="#" style="font-family: Microsoft Yahei; line-height: 30px;  color: #463265">风险追踪</a></li>
+                    <li role="presentation"><a role="menuitem" href="./rms-add-risk.jsp" style="font-family: Microsoft Yahei; line-height: 30px;  color: #463265">添加条目</a></li>
+                    <li role="presentation"><a role="menuitem" href="./rms-show-risk.jsp" style="font-family: Microsoft Yahei; line-height: 30px;  color: #463265">风险追踪</a></li>
                 </ul>
             </li>
 
@@ -132,11 +132,12 @@
 <script>
     $("#submit-btn").click(function() {
         var riskContent = document.getElementById("risk-content").value.trim();
-        var possibity = $('input:radio[name="possibity"]:checked').val();        
+        var possibility = $('input:radio[name="possibility"]:checked').val();        
         var effectLevel = $('input:radio[name="effect-level"]:checked').val();
         var thresholdValue = document.getElementById("threshold-value").value.trim();
         var submitter = document.getElementById("submitter").value.trim();
         var tracker = document.getElementById("tracker").value.trim();
+  		var url = "../addRisk?riskContent=" + riskContent + "&possibility=" + possibility + "&effectLevel=" + effectLevel + "&thresholdValue=" + thresholdValue + "&submitter=" + submitter + "&tracker=" + tracker;
 
         if(riskContent === "")
             $("#hint").text("风险内容不能为空!");
@@ -146,12 +147,11 @@
             $("#hint").text("提交者不能为空!");
         else if(tracker === "")
             $("#hint").text("追踪者不能为空!");
-        else if(possibity === undefined)
+        else if(possibility === undefined)
             $("#hint").text("请选择可能性!");
         else if(effectLevel === undefined)
             $("#hint").text("请选择影响程度!");
         else {
-       		var url = "addRisk?riskContent=" + riskContent + "&possibity=" + possibity + "&effectLevel=" + effectLevel + "$thresholdValue=" + thresholdValue + "$submitter=" + submitter + "&tracker=" + tracker;
         	
             if(window.XMLHttpRequest) {  
                 req = new XMLHttpRequest();  
@@ -160,7 +160,21 @@
             }
 	
             req.open("GET", url, true);
+            req.onreadystatechange = callback;  
             req.send(null);       
         }
-    });    
+    })
+
+    function callback() {
+        if(req.readyState == 4 && req.status == 200) {  
+            var check = req.responseText;  
+            
+            if(check === "YES") {
+            	window.location.href="./rms-show-risk.jsp"; 
+            }
+            else if(check === "NO") {
+                $("#hint").text("服务器端提交失败!");
+            }
+        }  
+    }
 </script>

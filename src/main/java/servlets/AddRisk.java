@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import proxy.UserDaoProxy;
-import vo.UserVo;
+import proxy.RiskDaoProxy;
+import vo.RiskVo;
 
 @WebServlet("/addRisk")
 public class AddRisk extends HttpServlet {
@@ -38,12 +38,32 @@ public class AddRisk extends HttpServlet {
 			response.setHeader("Pragma", "no-cache");
 			response.setDateHeader("Expires", 0);
 
-			String name = request.getParameter("user_name");
-			String password = request.getParameter("password");
-			UserVo userVo = new UserVo(name, password);
-			UserDaoProxy userDaoProxy = new UserDaoProxy();
+			String riskContent = request.getParameter("riskContent");
+			String possibility = request.getParameter("possibility");
+			String effectLevel = request.getParameter("effectLevel");
+			String thresholdValue = request.getParameter("thresholdValue");
+			String submitter = request.getParameter("submitter");
+			String tracker = request.getParameter("tracker");
+			String state = new String("未发生");
+			String description = new String("无");
 
-			if (userDaoProxy.register(userVo))
+			if(possibility.equals("high"))
+				possibility = "高";
+			else if(possibility.equals("middle"))
+				possibility = "中";
+			else
+				possibility = "低";
+			
+			if(effectLevel.equals("high"))
+				effectLevel = "高";
+			else if(effectLevel.equals("middle"))
+				effectLevel = "中";
+			else
+				effectLevel = "低";
+			
+			RiskVo risk = new RiskVo(riskContent, possibility, effectLevel, thresholdValue, submitter, tracker, state, description); 
+			RiskDaoProxy riskDaoProxy = new RiskDaoProxy();
+			if (riskDaoProxy.add(risk))
 				out.write("YES");
 			else
 				out.write("NO");
@@ -52,8 +72,7 @@ public class AddRisk extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-		}
+		} finally {}
 	}
 
 	/**
