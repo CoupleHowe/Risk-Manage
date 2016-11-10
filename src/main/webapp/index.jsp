@@ -56,7 +56,7 @@
             var check = req.responseText;  
             
             if(check === "YES") {
-                window.location.href="./jsp/risk-manage.jsp"; 
+                window.location.href="./jsp/rms-add-risk.jsp"; 
             }
             else if(check === "NO") {
                 $("#hint").text("用户不存在或密码错误");
