@@ -47,11 +47,18 @@ public class RiskDao {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet resultSet = pstmt.executeQuery();
 
-			if (resultSet.next()) {
-				System.out.println(resultSet.getString(1));
-				System.out.println(resultSet.getString(2));
-				// RiskVo risk = new RiskVo();
-
+			while (resultSet.next()) {
+				String riskContent = resultSet.getString(1);
+				String possibility = resultSet.getString(2);
+				String effectLevel = resultSet.getString(3);
+				String thresholdValue = resultSet.getString(4);
+				String submitter = resultSet.getString(5);
+				String tracker = resultSet.getString(6);
+				String state = resultSet.getString(7);
+				String description = resultSet.getString(8);
+				RiskVo risk = new RiskVo(riskContent, possibility, effectLevel, thresholdValue, submitter, tracker, state, description);
+				
+				risks.add(risk);
 			}
 		} finally {
 			if (pstmt != null) {

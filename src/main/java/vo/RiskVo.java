@@ -1,6 +1,28 @@
 package vo;
 
 public class RiskVo {
+	public RiskVo(String riskContent, String possibility, String effectLevel, String thresholdValue, String submitter, String tracker, String state, String description) {
+		this.riskContent = riskContent;
+		this.possibility = possibility;
+		this.effectLevel = effectLevel;
+		this.thresholdValue = thresholdValue;
+		this.submitter = submitter;
+		this.tracker = tracker;
+		this.state = state;
+		this.description = description;
+	}
+	
+	
+	private String riskContent;
+	private String possibility;
+	private String effectLevel;
+	private String thresholdValue;
+	private String submitter;
+	private String tracker;
+	
+	private String state;
+	private String description;
+	
 	public String getRiskContent() {
 		return riskContent;
 	}
@@ -65,24 +87,8 @@ public class RiskVo {
 		this.description = description;
 	}
 	
-	public RiskVo(String riskContent, String possibility, String effectLevel, String thresholdValue, String submitter, String tracker, String state, String description) {
-		this.riskContent = riskContent;
-		this.possibility = possibility;
-		this.effectLevel = effectLevel;
-		this.thresholdValue = thresholdValue;
-		this.submitter = submitter;
-		this.tracker = tracker;
-		this.state = state;
-		this.description = description;
+	public String toTable() {
+		return "<td>" + this.riskContent + "</td><td>" + this.possibility + "</td><td>" + this.effectLevel + "</td><td>"
+					+ this.thresholdValue + "</td><td>" + this.submitter + "</td><td>" + this.tracker + "</td><td>" + "未发现" + "</td><td>" + this.description + "</td>"; 
 	}
-	
-	private String riskContent;
-	private String possibility;
-	private String effectLevel;
-	private String thresholdValue;
-	private String submitter;
-	private String tracker;
-	
-	private String state;
-	private String description;
 }

@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import proxy.RiskDaoProxy;
+import vo.RiskVo;
 
 @WebServlet("/showRisk")
 public class ShowRisk extends HttpServlet {
@@ -48,10 +50,14 @@ public class ShowRisk extends HttpServlet {
 				System.out.println("b");
 			}
 			else {
-				if (riskDaoProxy.getRisks())
-					out.write("YES");
-				else
-					out.write("NO");
+				ArrayList<RiskVo> risks = riskDaoProxy.getRisks();
+				
+				String res = new String();
+				for(int i = 0; i < risks.size(); i++) {
+					res += "<tr>" + risks.get(i).toTable() + "</tr>";
+				}
+				
+				out.write(res);
 			}
 
 			out.flush();

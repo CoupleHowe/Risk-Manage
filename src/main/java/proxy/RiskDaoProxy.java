@@ -1,5 +1,7 @@
 package proxy;
 
+import java.util.ArrayList;
+
 import dao.RiskDao;
 import dbc.DatabaseConnection;
 import vo.RiskVo;
@@ -29,9 +31,15 @@ public class RiskDaoProxy {
 		return flag;
 	}
 
-	public boolean getRisks() throws Exception {
-		dao.getRisks();
-
-		return true;
+	public ArrayList<RiskVo> getRisks() throws Exception {
+		ArrayList<RiskVo> risks = new ArrayList<RiskVo>();
+		
+		try {
+			risks = dao.getRisks();
+		} finally {
+			dbc.close();
+		}
+		
+		return risks;
 	}
 }

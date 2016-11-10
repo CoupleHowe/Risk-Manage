@@ -127,6 +127,9 @@
     }
 
     function callback() {
-        console.log(a)
+    	if(req.readyState == 4 && req.status == 200) {  
+            var res = req.responseText;  
+            $("#table-body").html(res);
+        }
     }
 </script>
