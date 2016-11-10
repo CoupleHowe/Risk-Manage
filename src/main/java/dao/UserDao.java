@@ -46,9 +46,7 @@ public class UserDao {
         boolean flag = false;  
         try {  
             boolean isExisting = this.isExisting(user);
-            
-        	System.out.println(isExisting);
-            
+                        
             if(!isExisting) {
             	String sql = "insert into users (user_name, password) values(?, ?)";  
                 pstmt = conn.prepareStatement(sql); 
