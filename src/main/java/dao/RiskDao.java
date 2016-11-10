@@ -28,7 +28,7 @@ public class RiskDao {
             pstmt.setString(6, risk.getTracker());
             pstmt.setString(7, risk.getState());
             pstmt.setString(8, risk.getDescription());
-            System.out.println(pstmt.toString());
+
             pstmt.executeUpdate(); 
             flag = true;
         } catch (Exception e) {  

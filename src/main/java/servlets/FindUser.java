@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,8 +39,8 @@ public class FindUser extends HttpServlet {
 			response.setHeader("Pragma", "no-cache");
 			response.setDateHeader("Expires", 0);
 
-			String name = request.getParameter("user_name");
-			String password = request.getParameter("password");
+			String name = URLDecoder.decode(request.getParameter("user_name"), "UTF-8");
+			String password = URLDecoder.decode(request.getParameter("password"), "UTF-8");
 			UserVo userVo = new UserVo(name, password);
 			UserDaoProxy userDaoProxy = new UserDaoProxy();
 

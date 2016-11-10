@@ -29,8 +29,8 @@
 <script>
     var req;
     $("#sign-up").click(function() {
-        var user_name = document.getElementById("user_name").value.trim();
-        var password = document.getElementById("password").value.trim();
+        var user_name = encodeURI(document.getElementById("user_name").value.trim());
+        var password = encodeURI(document.getElementById("password").value.trim());
        	var url = "addUser?user_name=" + user_name + "&password=" + password;
 
         if(user_name === "")
@@ -38,7 +38,6 @@
         else if(password === "")
             $("#hint").text("密码不能为空");
         else {
-            // 创建XMLHttoRequest对象
             if(window.XMLHttpRequest) {  
                 req = new XMLHttpRequest();  
             }else if(window.ActiveXObject) {  

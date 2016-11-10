@@ -15,7 +15,7 @@
     <script src="../utils/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div style="min-width: 1366px;">
+    <div style="min-width: 1200px;">
         <ul class="nav nav-tabs" role="tablist">
             <li style="margin-left: 100px; height: 52px;">
                 <a href="#" class="navbar-brand" style="line-height: 32px; height: 52px; color: #463265; font-family: Microsoft Yahei">Risk Management System</a>

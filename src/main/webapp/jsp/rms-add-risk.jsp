@@ -15,7 +15,7 @@
     <script src="../utils/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div style="min-width: 1366px;">
+    <div style="min-width: 1200px;">
         <ul class="nav nav-tabs" role="tablist">
             <li style="margin-left: 100px; height: 52px;">
                 <a href="#" class="navbar-brand" style="line-height: 32px; height: 52px; color: #463265; font-family: Microsoft Yahei">Risk Management System</a>
@@ -131,12 +131,12 @@
 
 <script>
     $("#submit-btn").click(function() {
-        var riskContent = document.getElementById("risk-content").value.trim();
-        var possibility = $('input:radio[name="possibility"]:checked').val();        
-        var effectLevel = $('input:radio[name="effect-level"]:checked').val();
-        var thresholdValue = document.getElementById("threshold-value").value.trim();
-        var submitter = document.getElementById("submitter").value.trim();
-        var tracker = document.getElementById("tracker").value.trim();
+        var riskContent = encodeURI(document.getElementById("risk-content").value.trim());
+        var possibility = encodeURI($('input:radio[name="possibility"]:checked').val());        
+        var effectLevel = encodeURI($('input:radio[name="effect-level"]:checked').val());
+        var thresholdValue = encodeURI(document.getElementById("threshold-value").value.trim());
+        var submitter = encodeURI(document.getElementById("submitter").value.trim());
+        var tracker = encodeURI(document.getElementById("tracker").value.trim());
   		var url = "../addRisk?riskContent=" + riskContent + "&possibility=" + possibility + "&effectLevel=" + effectLevel + "&thresholdValue=" + thresholdValue + "&submitter=" + submitter + "&tracker=" + tracker;
 
         if(riskContent === "")
