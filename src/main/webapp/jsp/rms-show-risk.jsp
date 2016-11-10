@@ -112,4 +112,21 @@
 </html>
 
 <script>
+    window.onload = function() {
+        var url = "../showRisk";
+
+        if(window.XMLHttpRequest) {  
+            req = new XMLHttpRequest();  
+        }else if(window.ActiveXObject) {  
+            req = new ActiveXObject("Microsoft.XMLHTTP");  
+        }
+
+        req.open("GET", url, true);
+        req.onreadystatechange = callback;  
+        req.send(null);   
+    }
+
+    function callback() {
+        console.log(a)
+    }
 </script>
