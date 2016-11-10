@@ -44,22 +44,22 @@ public class AddRisk extends HttpServlet {
 			String thresholdValue = request.getParameter("thresholdValue");
 			String submitter = request.getParameter("submitter");
 			String tracker = request.getParameter("tracker");
-			String state = new String("Î´·¢Éú");
-			String description = new String("ÎŞ");
+			String state = new String("æœªå‘ç°");
+			String description = new String("æ— ");
 
 			if(possibility.equals("high"))
-				possibility = "¸ß";
+				possibility = "é«˜";
 			else if(possibility.equals("middle"))
-				possibility = "ÖĞ";
+				possibility = "ä¸­";
 			else
-				possibility = "µÍ";
+				possibility = "ä½";
 			
 			if(effectLevel.equals("high"))
-				effectLevel = "¸ß";
+				effectLevel = "é«˜";
 			else if(effectLevel.equals("middle"))
-				effectLevel = "ÖĞ";
+				effectLevel = "ä¸­";
 			else
-				effectLevel = "µÍ";
+				effectLevel = "ä½";
 			
 			RiskVo risk = new RiskVo(riskContent, possibility, effectLevel, thresholdValue, submitter, tracker, state, description); 
 			RiskDaoProxy riskDaoProxy = new RiskDaoProxy();

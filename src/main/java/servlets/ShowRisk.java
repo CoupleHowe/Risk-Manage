@@ -43,16 +43,15 @@ public class ShowRisk extends HttpServlet {
 			RiskDaoProxy riskDaoProxy = new RiskDaoProxy();
 			if(submitter != null) {
 				System.out.println("a");
-//				if (riskDaoProxy.getRisksBySubmitter())
-//					out.write("YES");
-//				else
-//					out.write("NO");
 			}
 			else if(tracker != null) {
 				System.out.println("b");
 			}
 			else {
-				System.out.println("c");
+				if (riskDaoProxy.getRisks())
+					out.write("YES");
+				else
+					out.write("NO");
 			}
 
 			out.flush();

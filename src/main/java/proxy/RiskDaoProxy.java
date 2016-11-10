@@ -30,4 +30,10 @@ public class RiskDaoProxy {
         
         return flag;  
     }
+	
+	public boolean getRisks() throws Exception {  
+		dao.getRisks();
+		        
+        return true;  
+    }
 }
