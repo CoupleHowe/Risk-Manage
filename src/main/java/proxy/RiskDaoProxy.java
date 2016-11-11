@@ -42,4 +42,28 @@ public class RiskDaoProxy {
 		
 		return risks;
 	}
+
+	public ArrayList<RiskVo> getRisksBySubmitter(String submitter) throws Exception {
+		ArrayList<RiskVo> risks = new ArrayList<RiskVo>();
+		
+		try {
+			risks = dao.getRisksBySubmitter(submitter);
+		} finally {
+			dbc.close();
+		}
+		
+		return risks;
+	}
+
+	public ArrayList<RiskVo> getRisksByTracker(String tracker) throws Exception {
+		ArrayList<RiskVo> risks = new ArrayList<RiskVo>();
+		
+		try {
+			risks = dao.getRisksByTracker(tracker);
+		} finally {
+			dbc.close();
+		}
+		
+		return risks;
+	}
 }

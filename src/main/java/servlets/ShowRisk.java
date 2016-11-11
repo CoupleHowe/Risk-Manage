@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -38,16 +39,30 @@ public class ShowRisk extends HttpServlet {
 			response.setHeader("Cache-Control", "no-store");
 			response.setHeader("Pragma", "no-cache");
 			response.setDateHeader("Expires", 0);
-
+			
 			String submitter = request.getParameter("submitter");
 			String tracker = request.getParameter("tracker");
 			
 			RiskDaoProxy riskDaoProxy = new RiskDaoProxy();
 			if(submitter != null) {
-				System.out.println("a");
+				ArrayList<RiskVo> risks = riskDaoProxy.getRisksBySubmitter(URLDecoder.decode(submitter, "UTF-8"));
+				
+				String res = new String();
+				for(int i = 0; i < risks.size(); i++) {
+					res += risks.get(i).toTable();
+				}
+				
+				out.write(res);
 			}
 			else if(tracker != null) {
-				System.out.println("b");
+				ArrayList<RiskVo> risks = riskDaoProxy.getRisksByTracker(URLDecoder.decode(tracker, "UTF-8"));
+				
+				String res = new String();
+				for(int i = 0; i < risks.size(); i++) {
+					res += risks.get(i).toTable();
+				}
+				
+				out.write(res);
 			}
 			else {
 				ArrayList<RiskVo> risks = riskDaoProxy.getRisks();

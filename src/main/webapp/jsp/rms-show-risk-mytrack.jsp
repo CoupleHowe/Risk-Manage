@@ -109,7 +109,7 @@
 			$("#userInfo").html(user_name);
 		}
 
-		var url = "../showRisk";
+		var url = "../showRisk?tracker=" + encodeURI(user_name);
 		if (window.XMLHttpRequest) {
 			req = new XMLHttpRequest();
 		} else if (window.ActiveXObject) {
